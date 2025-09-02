@@ -28,7 +28,7 @@ class NotificationController extends AbstractController
         NotificationManager $manager
     ): Response
     {
-        $id = $manager->send($dto);
+        $id = $manager->create($dto);
 
         return $this->json(['code' => 201, 'id' => $id], Response::HTTP_CREATED);
     }

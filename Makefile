@@ -22,11 +22,7 @@ logs: ## Run tail logs of application.
 
 .PHONY: test-% lint-%
 test-api: ## Launch test in api
-	docker compose exec application composer yaml-lint
-	docker compose exec application composer cscheck
-	docker compose exec application composer phpstan
-	docker compose exec application composer pest
-	docker compose exec application composer deptrac
+	docker compose exec application php bin/phpunit
 
 lint-api: ## Launch linter in api
 	docker compose exec application composer yaml-lint

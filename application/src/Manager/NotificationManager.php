@@ -20,7 +20,7 @@ class NotificationManager
     ) {
     }
 
-    public function send(NotificationInterface $dto): int
+    public function create(NotificationInterface $dto): int
     {
         // Using "Tagged Services" we could manage a proper loading of service needed
 
