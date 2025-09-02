@@ -61,14 +61,14 @@ I thought "we" might use it for email, sms, and other notification messages: typ
 File is located in /docs
 
 ### Creating a message
-![image create]](docs/media/create.png)
+![Screenshot create](docs/media/create.png)
 
 ### Listing messages
-![image list]](docs/media/list.png)
+![Screenshot list](docs/media/list.png)
 
 ### Sending a message
 Using "get", but a "put" would be preferred.
-![image send]](docs/media/send.png)
+![Screenshot send](docs/media/send.png)
 
 ### Creating a message, with invalid email and to short subject
-![image error]](docs/media/submit_error.png)
+![Screenshot error](docs/media/submit_error.png)
