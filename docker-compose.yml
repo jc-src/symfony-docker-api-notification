@@ -1,0 +1,46 @@
+version: "3.4"
+
+services:
+  application:
+    platform: linux/amd64
+    restart: always
+    container_name: api.application
+    build:
+      dockerfile: docker/nginx-fpm/Dockerfile
+      context: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./application:/var/www
+      # cache folders
+      - /var/www/var
+      #- /var/www/
+    networks:
+      - default
+    environment:
+      XDEBUG_YOUR_COMPUTER_IP: '10.0.0.11' # mac: ipconfig getifaddr en0
+      APP_ENV: 'dev'
+      APP_DEBUG: true
+      DATABASE_URL: 'mysql://db-user:db-pwd@api.mysql:3306/api_notifications?serverVersion=8.1'
+      MAILER_DSN: null://null
+
+  mysql:
+    image: mysql:8.1
+    platform: linux/x86_64
+    restart: no
+    container_name: api.mysql
+    ports:
+      - "3316:3306"
+    volumes:
+      - db_api_test_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: api_notifications
+      MYSQL_USER: db-user
+      MYSQL_PASSWORD: db-pwd
+
+networks:
+  default:
+    name: api-network
+volumes:
+  db_api_test_data:
